@@ -152,7 +152,11 @@ fn main() {
     command = command.replace("INDEX_PAGE", &index_page);
 
     command = command.strip_suffix(',').unwrap().to_string();
-    command.push_str("]'],title:\"La Casa Nostra menu\",author:\"zegevlier\"}");
+    command.push(']');
+    if !last_was_custom {
+        command.push_str("']");
+    }
+    command.push_str(",title:\"La Casa Nostra menu\",author:\"zegevlier\"}");
 
     println!("{}", command);
 
